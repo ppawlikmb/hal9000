@@ -1,0 +1,18 @@
+module Hal9000
+  class Robot
+    module Parser
+      VALID_COMMANDS = ['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT']
+
+      def parse(file)
+        File.open( file ).each do |line|
+          command, args = line.split
+          if VALID_COMMANDS.include? command
+            arguments = args.split(',').map(&:strip) if args
+
+            send(command.downcase.to_sym, *arguments)
+          end
+        end
+      end
+    end # Parser
+  end # Robot
+end # Hal9000
