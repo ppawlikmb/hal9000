@@ -21,7 +21,7 @@ module Hal9000
     end
 
     def placed?
-      !(position_x.nil? || position_y.nil?)
+      !(position_x.nil? || position_y.nil? || orientation.get_direction.nil?)
     end
   end # Robot
 end # Hal9000

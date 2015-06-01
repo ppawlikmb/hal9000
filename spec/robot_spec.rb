@@ -15,6 +15,15 @@ describe Robot do
     expect(robot.place(0, 0, :north)).to eq(true)
   end
 
+  it "shouldn't be allowed to be placed with a wrong direction" do
+    expect(robot.place(0, 0, :none)).to eq(false)
+  end
+
+  it "shouldn't report placed after placing a wrong direction" do
+    robot.place(0, 0, :none)
+    expect(robot.placed?).to eq(false)
+  end
+
   context 'after it is placed on board' do
     before(:each) do
       robot.place(2, 2, :north)

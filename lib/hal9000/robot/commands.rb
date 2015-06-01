@@ -3,9 +3,12 @@ module Hal9000
     module Commands
       def place(x, y, f)
         while_in_bounds(x, y) do
-          @position_x, @position_y = x.to_i, y.to_i
-          @orientation.set(f)
-          true
+          if @orientation.set(f)
+            @position_x, @position_y = x.to_i, y.to_i
+            true
+          else
+            false
+          end
         end
       end
 
