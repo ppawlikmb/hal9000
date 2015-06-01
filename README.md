@@ -29,7 +29,7 @@ hal = Hal9000.new
 After that you can either parse a file for commands using:
 
 ```ruby
-hal.parse('path/to/file')
+hal.parse_file('path/to/file')
 ```
 
 or use commands: `place(x, y, direction)`, `left`, `right`, `move`, `report`.

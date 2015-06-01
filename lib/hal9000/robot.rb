@@ -3,11 +3,13 @@ require 'forwardable'
 require 'hal9000/robot/commands'
 require 'hal9000/robot/orientation'
 require 'hal9000/robot/parser'
+require 'hal9000/robot/parser/file'
 
 module Hal9000
   class Robot
     include Commands
     include Parser
+    include Parser::File
 
     attr_reader :board, :position_x, :position_y, :orientation
 

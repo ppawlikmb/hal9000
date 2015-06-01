@@ -3,14 +3,12 @@ module Hal9000
     module Parser
       VALID_COMMANDS = ['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT']
 
-      def parse(file)
-        File.open( file ).each do |line|
-          command, args = line.split
-          if VALID_COMMANDS.include? command
-            arguments = args.split(',').map(&:strip) if args
+      def parse_line(line)
+        command, args = line.split
+        if VALID_COMMANDS.include? command
+          arguments = args.split(',').map(&:strip) if args
 
-            send(command.downcase.to_sym, *arguments)
-          end
+          send(command.downcase.to_sym, *arguments)
         end
       end
     end # Parser
